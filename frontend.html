@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>To-Do List</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>To-Do List</h1>
+
+    <form action="/api/todolist" method="post" class="mb-3">
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" name="title" id="title" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea name="description" id="description" class="form-control"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="dueDate">Due Date</label>
+        <input type="date" name="dueDate" id="dueDate" class="form-control">
+      </div>
+
+      <button type="submit" class="btn btn-primary">Add Item</button>
+    </form>
+
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Due Date</th>
+          <th>Is Completed</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="todo-list-items"></tbody>
+    </table>
+
+    <script>
+      
+      async function getToDoListItems() {
+        const response = await axios.get('/api/todolist');
+        const toDoListItems = response.data;
+
+        
+        const todoListItemsTable = document.querySelector('#todo-list-items');
+        todoListItemsTable.innerHTML = '';
+
+        for (const toDoListItem of toDoListItems) {
+          const row = document.createElement('tr');
+
+          const titleCell = document.createElement('td');
+          titleCell.textContent = toDoListItem.title;
+          row.appendChild(titleCell);
+
+          const descriptionCell = document.createElement('td');
+          descriptionCell.textContent = toDoListItem.description;
+          row.appendChild(descriptionCell);
+
+          const dueDateCell = document.createElement('td');
+          dueDateCell.textContent = toDoListItem.dueDate;
+          row.appendChild(dueDateCell);
+
+          const isCompletedCell = document.createElement('td');
+          isCompletedCell.textContent = toDoListItem.isCompleted;
+          row.appendChild(isCompletedCell);
+
+          const actionsCell = document.createElement('td');
+
+          const editButton = document.createElement('button');
+          editButton.textContent = 'Edit';
+          editButton.addEventListener('click', async () => {
+           
+          });
+          actionsCell.appendChild(editButton);
+
+          const deleteButton = document.createElement('button');
+          deleteButton.textContent = 'Delete';
+          deleteButton.addEventListener('click', async () => {
+            // TODO: Implement the delete functionality
+          });
+          actionsCell.appendChild(deleteButton);
+
+          row.appendChild(actionsCell);
+
+          todoListItemsTable.appendChild(row);
+        }
+      }
+
+     
+      getToDoListItems();
+    </script>
+  </div>
+</body>
+</html>

@@ -1,0 +1,27 @@
+**README**
+
+This is a simple To-Do List application built with ASP.NET Core, C#, HTML, CSS, and JavaScript.
+
+**To run the application:**
+
+1. Clone the repository.
+2. Install the .NET Core SDK and ASP.NET Core Runtime.
+3. Restore the dependencies: `dotnet restore`.
+4. Run the application: `dotnet run`.
+
+The application will be running on `http://localhost:5000`.
+
+**To use the application:**
+
+1. Add a new to-do item by entering a title, description, and due date in the form and clicking the "Add Item" button.
+2. Edit an existing to-do item by clicking the "Edit" button next to it.
+3. Delete a to-do item by clicking the "Delete" button next to it.
+
+**Unit tests:**
+
+The unit tests for the application can be run using the following command:
+
+```
+dotnet test
+```
+

@@ -38,3 +38,6 @@ var tinderUser={
 } 
 console.log('keys of object are',Object.keys(tinderUser));
 console.log('keys of values are',Object.values(tinderUser));
+
+
+

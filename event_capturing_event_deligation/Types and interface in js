@@ -1,0 +1,20 @@
+interface tushar{
+    name: string;
+    readonly id: number;
+}
+const value: tushar={
+    name:'',
+    id:12
+}
+type valuse={
+    name: string;
+    id: number;
+    lambda: string;
+
+}
+function val(str: valuse):tushar{
+    str.name='',
+    str.lambda='',
+    str.id=12
+    return {name:str.name, id: str.id}
+}
